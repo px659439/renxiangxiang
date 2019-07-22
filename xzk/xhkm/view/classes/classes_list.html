@@ -1,0 +1,42 @@
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">班级管理--班级展示</strong></h2>
+      <div class="page_title">
+      
+      <!--  <a class="fr top_rt_btn">右侧按钮</a> -->
+      </div>
+      <table class="table">
+       <tr node_pid="0">
+    
+        <th>班级名称</th>
+        <th>创建时间</th>
+        <th>成员数</th>
+        <th>班主任</th>
+        <th>操作</th>
+
+       </tr>
+        <?php  foreach ($classeslist as $k => $v): ?>
+     
+       <tr admin_id = "<?php echo $v['c_id']; ?>" role_status = "<?php echo $v['status']; ?>">
+       
+        <td style="width:90px;"><?php echo $v['c_name']; ?></td>
+        <td style="width:200px;"><?php echo date("Y.m.d H:i:s",$v['time']); ?></td>
+	  	<td style="width:90px;"><?php echo $v['num']; ?></td>  
+        <td style="width:150px;"> <?php echo $v['h_name']; ?> </td>
+        <td style="width:100px;">
+	 	<a href="classes_user?c_id=<?php echo $v['c_id'] ; ?>" class="inner_btn">学员列表</a>
+
+		<?php if ($v['status'] == '1'): ?>
+        	
+           <a href="classes_status?c_id=<?php echo $v['c_id'] ; ?>&status=<?php  echo $v['status'];?>" class="inner_btn">结课</a>
+          <?php else : ?>
+         	已结课
+         <?php endif; ?>
+
+        </td>
+       </tr>
+     <?php endforeach; ?>
+      </table>
+
+     </section>
+
+    

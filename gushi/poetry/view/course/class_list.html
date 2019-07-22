@@ -1,0 +1,30 @@
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">课件管理--课件展示</strong></h2>
+      <div class="page_title">
+      
+      <!--  <a class="fr top_rt_btn">右侧按钮</a> -->
+      </div>
+      <table class="table">
+       <tr node_pid="0">
+         <th>课节序号</th>
+        <th>课节名称</th>
+        <th>课节作者</th>
+        <th>课节视频</th>
+        <th>添加测试题</th>
+        <th>操作</th>
+
+       </tr>
+        <?php foreach ($classall as $k => $v): ?>
+       <th><?php  echo $v['class_id'];  ?></th>
+        <th><?php  echo $v['class_name'];  ?></th>
+        <th><?php  echo $v['class_author'];  ?></th>
+        <th><video height="100" width="100" src="<?php echo $v['class_url']; ?>"></video></th>
+        <th><a href="class_choice?class_id=<?php echo $v['class_id']; ?>" class="inner_btn">选择题</a> || <a href="class_blanks?class_id=<?php echo $v['class_id']; ?>" class="inner_btn">填空题</a> || <a href="class_read?class_id=<?php echo $v['class_id']; ?>" class="inner_btn">朗读题</a></th>
+        <th><a href="class_delete?class_id=<?php echo $v['class_id']; ?>" class="inner_btn">删除</a>||<a href="classedit?class_id=<?php echo $v['class_id']; ?>" class="inner_btn">编辑</a></th>
+
+       </tr>
+     <?php endforeach; ?>
+      </table>
+     </section>
+
+    

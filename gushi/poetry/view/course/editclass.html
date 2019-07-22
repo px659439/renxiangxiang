@@ -1,0 +1,155 @@
+<style type="text/css"> 
+.window{ 
+    width:450px; 
+      background-color:#eee; 
+      position:absolute; 
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      height: 300px;
+      /*padding:2px; 
+      margin:5px;*/ 
+      display:none; 
+      } 
+/*.content{ 
+     height:20px; 
+      background-color:#FFF; 
+      font-size:14px; 
+  
+      } 
+      .title{ 
+          padding:15px; 
+          color:#0CF; 
+          font-size:14px; 
+          } 
+  .title img{ 
+          float:right; 
+          } */
+ </style>
+
+
+<script type="text/javascript" language="javascript">
+      $(document).ready(function () {
+          $("#btn_center").click(function () {
+              popCenterWindow();
+          });
+  
+      }); 
+   
+</script> 
+
+
+
+
+
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">课件管理--编辑课件</strong></h2>
+      <div class="page_title">
+ <input type="button" value="课程添加课节" id="btn_center" /> 
+
+         </div>
+      <table class="table">
+       <tr node_pid="0">
+
+        <th>课节名称</th>
+        <th>课节作者</th>
+        <th>课节视频</th>
+        <th>课节位置</th>
+        <th>操作</th>
+
+       </tr>
+        <?php foreach ($classall as $k => $v): ?>
+        	<tr>
+        <th><?php  echo $v['class_name'];  ?></th>
+        <th><?php  echo $v['class_author'];  ?></th>
+        <th><video height="100" width="100" src="<?php echo $v['class_url']; ?>"></video></th>
+        <th><?php  echo $v['desc'];  ?></th>
+        <th><a href="editclassdel?class_id=<?php echo $v['class_id']; ?>&cour_id=<?php echo $cour_id; ?>" class="inner_btn">删除</a></th>
+
+       </tr>
+     <?php endforeach; ?>
+      </table>
+     </section>
+         
+         <div class="window" id="center"> 
+        <div id="title" class="title"><img src="http://pic002.cnblogs.com/images/2012/451207/2012100814082487.jpg" alt="关闭" /></div> 
+          <div class="content">
+                 <form action="editadd" method="post"  enctype="multipart/form-data">
+                     <li>
+                      <span class="item_name" style="width:120px;">课节顺序：</span>
+                      <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="desc" />
+                       <input name="course_id" value="<?php  echo $cour_id; ?>" hidden />
+                     </li>
+
+                    <li>
+                      <span class="item_name" style="width:120px;">选择课节：</span>
+                      <select name="class_id">
+                        <?php foreach ($all as $k => $v): ?>
+                        <option value="<?php  echo $v['class_id'];  ?>"><?php  echo $v['class_name'];  ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                     </li>
+                     <li>
+                      <span class="item_name" style="width:120px;"></span>
+                      <input type="submit" class="link_btn"/>
+                     </li>
+             </form>
+      </div> 
+      </div> 
+
+ <script type="text/javascript">
+
+    //获取窗口的高度 
+  var windowHeight; 
+  //获取窗口的宽度 
+  var windowWidth; 
+  //获取弹窗的宽度 
+  var popWidth; 
+  //获取弹窗高度 
+  var popHeight; 
+  function init(){ 
+     windowHeight=$(window).height(); 
+     windowWidth=$(window).width(); 
+     popHeight=$(".window").height(); 
+     popWidth=$(".window").width(); 
+  } 
+  //关闭窗口的方法 
+  function closeWindow(){ 
+      $(".title img").click(function(){ 
+          $(this).parent().parent().hide("slow"); 
+          }); 
+      } 
+      //定义弹出居中窗口的方法 
+      function popCenterWindow(){ 
+          init(); 
+          //计算弹出窗口的左上角Y的偏移量 
+      var popY=(windowHeight-popHeight)/2; 
+      var popX=(windowWidth-popWidth)/2; 
+      //alert('jihua.cnblogs.com'); 
+      //设定窗口的位置 
+      $("#center").css("top",popY).css("left",popX).slideToggle("slow");  
+      closeWindow(); 
+      } 
+     function popLeftWindow(){ 
+         init(); 
+         //计算弹出窗口的左上角Y的偏移量 
+     var popY=windowHeight-popHeight; 
+     //var popX=-(windowWidth-popWidth); 
+     //alert(popY); 
+     //设定窗口的位置 
+     $("#left").css("top",popY-50).css("left",50).slideToggle("slow"); 
+     closeWindow(); 
+     } 
+     function popRightWindow(){ 
+         init(); 
+         //计算弹出窗口的左上角Y的偏移量 
+     var popY=windowHeight-popHeight; 
+     var popX=windowWidth-popWidth; 
+     //alert(www.cnblogs.com/jihua); 
+     //设定窗口的位置 
+     $("#right").css("top",popY-50).css("left",popX-50).slideToggle("slow"); 
+     closeWindow(); 
+     }
+      </script> 

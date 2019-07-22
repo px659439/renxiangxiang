@@ -1,0 +1,45 @@
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">权限管理--权限添加</strong></h2>
+      <ul class="ulColumn2">
+      <form action="node_add" method="post">
+       <li>
+        <span class="item_name" style="width:120px;">权限名称：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="node_name" />
+        <!-- <span class="errorTips">错误提示信息...</span> -->
+       </li>
+        <li>
+        <span class="item_name" style="width:120px;">权限控制器：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="node_controller" />
+        <!-- <span class="errorTips">错误提示信息...</span> -->
+       </li>
+         <li>
+        <span class="item_name" style="width:120px;">权限方法：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="node_method" />
+        <!-- <span class="errorTips">错误提示信息...</span> -->
+       </li>
+        <li>
+        <span class="item_name" style="width:120px;">所属权限：</span>
+        <select class="select" name="node_pid">
+         <option value="0">顶级权限</option>
+
+        
+         <?php foreach ($node_type as $k => $v): ?>
+         <option value="<?php echo $v['node_id']; ?>"><?php echo str_repeat("**",$v['level']);?><?php echo $v['node_name']; ?></option>
+         <?php endforeach; ?>
+
+        </select>
+       <!--  <span class="errorTips">错误提示信息...</span> -->
+       </li>
+       <li>
+        <span class="item_name" style="width:120px;">是否展示：</span>
+        <label class="single_selection"><input type="radio" name="node_status" value="1" />是</label>
+        <label class="single_selection"><input type="radio" name="node_status" value="0" />否</label>
+       </li>
+  
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+      </ul>
+     </section>

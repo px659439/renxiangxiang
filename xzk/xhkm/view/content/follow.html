@@ -1,0 +1,16 @@
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">内容管理--跟进添加</strong></h2>
+      <ul class="ulColumn2">
+      <form action="follow" method="post">
+       <li>
+        <span class="item_name" style="width:120px;">跟进内容：</span>
+          <textarea placeholder="摘要信息" name="record_comment" class="textarea" style="width:500px;height:100px;"></textarea>
+       		<input type="text" name="user_id" value="<?php  echo $user_id;?>" hidden>
+       </li>
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+      </ul>
+     </section>

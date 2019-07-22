@@ -1,0 +1,50 @@
+
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">课件管理--编辑题目</strong></h2>
+      <div class="page_title">
+
+
+         </div>
+      <table class="table">
+       <tr node_pid="0">
+
+        <th>课节名称</th>
+        <th>题干内容</th>
+        <th>题型</th>
+        <th>题位置</th>
+        <th>栏位</th>
+        <th>操作</th>
+
+       </tr>
+        <?php foreach ($classall as $k => $v): ?>
+        	<tr>
+        <th><?php  echo $v['class_name'];  ?><?php  echo $v['class_author']; ?></th>
+        <th><?php  echo $v['topic_name'];  ?></th>
+        <th>
+		    <?php if ($v['topic_type'] == '1'): ?>
+                  选择题
+            <?php elseif($v['topic_type'] == '2') : ?>
+                  朗读题
+            <?php elseif($v['topic_type'] == '3') : ?>
+            	填空题
+            <?php endif; ?>
+        </th>
+        <th><?php  echo $v['topic_desc'];  ?></th>
+		 <th>
+	    <?php if ($v['hurdles'] == '0'): ?>
+              无
+        <?php elseif($v['hurdles'] == '1') : ?>
+              一栏
+        <?php elseif($v['hurdles'] == '2') : ?>
+        	二栏
+        <?php endif; ?>
+    	</th>
+
+        <th><a href="topicdel?t_id=<?php echo $v['t_id']; ?>&class_id=<?php  echo $v['class_id']; ?>" class="inner_btn">删除</a></th>
+
+       </tr>
+     <?php endforeach; ?>
+      </table>
+     </section>
+         
+       

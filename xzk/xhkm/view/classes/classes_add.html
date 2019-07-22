@@ -1,0 +1,141 @@
+    
+
+ <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+ <style type="text/css">
+	.link_btn{
+		margin-bottom: 150px !important;
+	}
+</style>
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">班级管理--班级添加</strong></h2>
+      <ul class="ulColumn2">
+
+<p id="progress">
+
+  <p id="finish" style="width: 0%;" progress="0"></p>
+
+</p>
+
+      <form action="classes_add" method="post"  enctype="multipart/form-data">
+       <li>
+        <span class="item_name" style="width:120px;">班级名称：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="c_name" />
+       </li>
+
+	   <li>
+        <span class="item_name" style="width:120px;">班主任：</span>
+		
+		<select name="h_id" >
+		<?php  foreach ($headmasterlist as $k => $v): ?>
+		  <option value="<?php echo $v['h_id']; ?>"><?php echo $v['h_name']; ?></option>
+  		<?php endforeach; ?>
+		</select>
+       </li>
+
+		<li id="Studentlist">
+        <span class="item_name" style="width:120px;">学生列表</span>
+
+       </li>
+		<div id="add">
+			
+		</div>
+	
+		<li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+
+
+		<br><H1><b>筛选学生</b></H1></br>
+
+		<li>
+        <span class="item_name" style="width:120px;">注册时间：</span>
+		<input type="date" id="starttime" >------<input type="date" id="endtime" >
+       	</li>
+
+
+		<li>
+        <span class="item_name" style="width:120px;">购买课程：</span>
+		<select id="course" >
+			<option value="">请选择</option>
+		<?php  foreach ($courselist as $k => $v): ?>
+		  <option value="<?php echo $k.','.$v['course_id']; ?>"><?php echo $v['course_name']; ?></option>
+  		<?php endforeach; ?>
+		</select>
+       </li>
+
+ 		<li>
+        <span class="item_name" style="width:120px;">购买时间：</span>
+        <input type="date" id="buystarttime" >------<input type="date" id="buyendtime" >
+       </li>
+
+		<li>
+     	<button class="link_btn" onclick='displayDate()' >执行</button>
+       	</li>
+     </section>
+<script type="text/javascript">
+function displayDate()
+{
+
+	//注册开始时间
+	starttime = $("#starttime").val();
+	//注册结束时间
+	endtime = $("#endtime").val();
+	//购买课程id
+	course = $("#course").val();
+	//购买开始时间
+	buystarttime = $("#buystarttime").val();
+	//购买结束时间
+	buyendtime = $("#buyendtime").val();
+
+	$.ajax({
+    url: 'userlist',
+    type: 'GET',
+    dataType: 'json',
+    data: {
+        starttime:starttime, 
+        endtime:endtime, 
+        course:course, 
+        buystarttime:buystarttime, 
+        buyendtime:buyendtime, 
+    },
+    success: function(res){
+         console.log(res)
+
+		if(res.code==1){
+			 let list = res.list
+			 console.log(list)
+			test = '';
+			for (var i =0; i<list.length; i++) {
+				test += `<li><input type="checkbox" checked name="user_id[]" value="${list[i].user_id}"> <img src="${list[i].wx_img}" alt="" style="width:20px; height:20px"> ${list[i].wx_name} | ${list[i].user_phone}</li>`;
+			}
+			$("#add").html(test)
+		}else{
+			alert("未查找到数据")
+		}
+
+    },
+    error: function(){
+          alert('查询失败!');
+    }
+ })
+
+
+
+
+
+
+
+
+
+
+	
+
+
+}
+</script>

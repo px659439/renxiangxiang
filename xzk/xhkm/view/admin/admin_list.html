@@ -1,0 +1,83 @@
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">管理员管理--管理员展示</strong></h2>
+      <div class="page_title">
+      
+      <!--  <a class="fr top_rt_btn">右侧按钮</a> -->
+      </div>
+      <table class="table">
+       <tr node_pid="0">
+    
+        <th>名称</th>
+        <th>所有权限</th>
+        <th>状态</th>
+        <th>操作</th>
+       </tr>
+        <?php foreach ($admin as $k => $v): ?>
+     
+       <tr admin_id = "<?php echo $v['admin_id']; ?>" role_status = "<?php echo $v['admin_status']; ?>">
+       
+        <td style="width:90px;"><?php echo $v['admin_name']; ?></td>
+        <td style="width:200px;"><?php echo $v['mynode']; ?></td>
+        <td style="width:150px;" class="new_status">
+
+ 		<?php if ($v['admin_status'] == '1'): ?>
+        	
+          启用
+          <?php else : ?>
+          冻结
+         <?php endif; ?>
+
+
+    </td>
+        <td style="width:100px;">
+          <a href="admin_delete?admin_id=<?php echo $v['admin_id']; ?>" class="inner_btn">删除</a>
+          <a href="up_status?admin_id=<?php echo $v['admin_id'] ; ?>&admin_status=<?php  echo $v['admin_status'];?>" class="inner_btn">变更状态</a>
+        </td>
+       </tr>
+     <?php endforeach; ?>
+      </table>
+
+     </section>
+     <script>
+    $(function(){
+          $(".status").click(function(){
+             var admin_status = $(this).parents("tr").attr("admin_status");
+             var role_s =  $(this).parent().prev().text();
+              
+              if($.trim(role_s)=="启用"){
+                var role_ss = "冻结";
+              }
+              if($.trim(role_s)=="冻结"){
+                var role_ss = "启用";
+              }
+              
+             var role_id = $(this).parents("tr").attr("role_id");
+            var new_status = $(this).parent().prev();
+            var t = $(this);
+             $.ajax({
+                type:"post",
+                url:"__URL__/up_status",
+                data:{
+                  role_id,role_status
+                },
+                dataType:"json",
+                success:function(msg){
+                      if(msg.error==0){
+                          if(role_status==1){
+                            t.parents("tr").attr("role_status","0");
+                          }
+                           if(role_status==0){
+                            t.parents("tr").attr("role_status","1");
+                          }
+                           new_status.html(role_ss); 
+                          }
+                      else{
+                        alert("程序有错误");
+                      }
+                } 
+             })
+          })
+    })
+
+     </script>
+    

@@ -1,0 +1,52 @@
+<section class="rt_wrap content mCustomScrollbar">
+
+	<?php if ($type == '1'): ?>
+	   <form action="updateuser" method="post">
+        <h2>开通体验课：</h2>
+		<br><br><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $listall['wx_img']; ?>" height="80" width="80" alt="">
+		确认开通用户<?php 	echo $listall['wx_name'];?>的体验课
+		<br><br><br>
+        <span class="item_name" style="width:120px;">选择日期：</span>
+        <input type="date" class="textbox textbox_295" placeholder="文本信息提示..." name="course_time" />
+        <input type="text" name="type" value="1" hidden>
+        <input type="text" name="user_id" value="<?php 	echo $listall['user_id'];?>" hidden>
+        <br><br><br>
+     	<a href="content_list" class="link_btn">取消</a> 
+        <input type="submit" class="link_btn"/>
+       </form>
+
+	<?php elseif($type == '2') : ?>
+	 <form action="updateuser" method="post">
+       <h2>开通半年课：</h2>
+		<br><br><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $listall['wx_img']; ?>" height="80" width="80" alt="">
+		确认开通用户<?php 	echo $listall['wx_name'];?>的半年课
+		<br><br><br>
+       	<h1>半年课</h1> <input type="text" name="type" value="2" hidden>
+       	 <input type="text" name="user_id" value="<?php 	echo $listall['user_id'];?>" hidden>
+        <br><br><br>
+      	<a href="content_list" class="link_btn">取消</a> 
+        <input type="submit" class="link_btn"/>
+       
+       </form>
+
+	<?php elseif($type == '3') : ?>
+  <form action="updateuser" method="post">
+      	<h2>开通一年课：</h2>
+		<br><br><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $listall['wx_img']; ?>" height="80" width="80" alt="">
+		确认开通用户<?php 	echo $listall['wx_name'];?>的一年课
+		<br><br><br>
+       	<h1>一年课</h1> <input type="text" name="type" value="3" hidden>
+       	 <input type="text" name="user_id" value="<?php 	echo $listall['user_id'];?>" hidden>
+        <br><br><br>
+      	<a href="content_list" class="link_btn">取消</a> 
+    
+        <input type="submit" class="link_btn"/>
+       </form>
+       
+
+	<?php endif; ?>
+</section>
+

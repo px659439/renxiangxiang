@@ -1,0 +1,44 @@
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">权限管理--权限添加</strong></h2>
+      <ul class="ulColumn2">
+      <form action="admin_add" method="post">
+       <li>
+        <span class="item_name" style="width:120px;">管理员名称：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="admin_name" />
+       <!--  <span class="errorTips">错误提示信息...</span> -->
+       </li>
+       <li>
+        <span class="item_name" style="width:120px;">管理员密码：</span>
+        <input type="password" class="textbox textbox_295" placeholder="文本信息提示..." name="admin_pwd" />
+       <!--  <span class="errorTips">错误提示信息...</span> -->
+       </li>
+        <li>
+        <span class="item_name" style="width:120px;">管理员赋权：</span>
+        <table style="margin-left: 120px">
+      
+          <tr>  
+          	<?php foreach ($role_lists as $k => $v): ?>
+            <td><label class="single_selection"><input type="checkbox" name="role_id[]" class="parent" value="<?php echo $v['role_id']; ?>"><?php echo $v['role_name']; ?></label></td>
+           
+          <?php endforeach; ?>
+          </tr>
+          
+        </table>
+
+       </li>
+      
+       <li>
+        <span class="item_name" style="width:120px;">是否启用：</span>
+        <label class="single_selection"><input type="radio" name="admin_status" value="1" />是</label>
+        <label class="single_selection"><input type="radio" name="admin_status" value="0" />否</label>
+       </li>
+  
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+      </ul>
+     </section>
+
+   

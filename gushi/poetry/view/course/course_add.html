@@ -1,0 +1,98 @@
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">课程管理--课程添加</strong></h2>
+      <ul class="ulColumn2">
+      <form action="Course_add" method="post" enctype="multipart/form-data">
+       <li>
+        <span class="item_name" style="width:120px;">课程名称：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="cour_name" />
+        <!-- <span class="errorTips">错误提示信息...</span> -->
+       </li>
+        <li>
+        <span class="item_name" style="width:120px;">课程类型：</span>
+        <label class="single_selection"><input type="radio" name="cour_type" value="1" />体验课</label>
+        <label class="single_selection"><input type="radio" name="cour_type" value="2" />正式课</label>
+        <label class="single_selection"><input type="radio" name="cour_type" value="3" />解锁课</label>
+       </li>
+        <li>
+        <span class="item_name" style="width:120px;">课程排序：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="cour_desc" />
+        <!-- <span class="errorTips">错误提示信息...</span> -->
+       </li>
+
+        <li>
+        <span class="item_name" style="width:120px;">课程价格：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="price" />
+        <!-- <span class="errorTips">错误提示信息...</span> -->
+       </li>
+
+       <li>
+        <span class="item_name" style="width:120px;">课程封面图：</span>
+        <label class="uploadImg">
+         <input type="file" id="file"/>
+         <span>上传图片</span>
+        </label>
+         <input id="imgname" name="cour_img" value="" hidden />
+        <img  id='fileimg' height="100" width="100" src="" alt="">
+       </li>
+
+        <li>
+        <span class="item_name" style="width:120px;">介绍页封面图：</span>
+        <label class="uploadImg">
+         <input type="file" id="introduceimg"/>
+         <span>上传图片</span>
+        </label>
+         <input id="inimg" name="introduceimg" value="" hidden />
+        <img  id='introimg' height="100" width="100" src="" alt="">
+       </li>
+
+        <li>
+        <span class="item_name" style="width:120px;">介绍页文案：</span>
+        <textarea placeholder="摘要信息" name="introduce" class="textarea" style="width:500px;height:100px;"></textarea>
+       </li>
+       
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+      </ul>
+     </section>
+
+<script type="text/javascript">
+ 
+    var client = new OSS.Wrapper({
+    region: "oss-cn-beijing",
+    accessKeyId: "LTAIQWfZax1hLcmH",
+    accessKeySecret: "MZCaAEyJYoCiOXv3ZScpQInkXJmLZV",
+    bucket: "kkmandarin",
+    secure:true
+  });
+  document.getElementById('file').addEventListener('change', function (e) {
+    var file = document.getElementById("file").files[0];
+      console.log(document.getElementById("file"))
+    var val = 'poetry/img/'+document.getElementById("file").value;
+       client.multipartUpload(val, file).then(function (result) {
+       path = result.res.requestUrls[0].split("?")[0]
+      $("#fileimg").attr('src',path); 
+       $("#imgname").attr('value',path); 
+      console.log(result);
+    }).catch(function (err) {
+      console.log(err);
+    });
+  });
+
+   document.getElementById('introduceimg').addEventListener('change', function (e) {
+    var file = document.getElementById("introduceimg").files[0];
+      console.log(document.getElementById("introduceimg"))
+    var val = 'poetry/img/'+document.getElementById("introduceimg").value;
+       client.multipartUpload(val, file).then(function (result) {
+       path = result.res.requestUrls[0].split("?")[0]
+      $("#introimg").attr('src',path); 
+       $("#inimg").attr('value',path); 
+      console.log(result);
+    }).catch(function (err) {
+      console.log(err);
+    });
+  });
+
+</script>

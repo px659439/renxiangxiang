@@ -1,0 +1,232 @@
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">内容管理--开通课程</strong></h2>
+
+      <div class='tabs' id="tabs">
+        <ul class='horizontal'>
+
+            <li rel="tab-1">未激活体验课</li>
+
+            <li rel="tab-2">已激活体验课</li>
+
+            <li rel="tab-3">已激活半年课</li>
+
+            <li rel="tab-4">已激活一年可</li>
+          
+            <li rel="tab-5" class="selectActive">全部学员</li>
+  
+        </ul>
+
+        <div rel='tab-1'> 
+          <table class="table">
+             <tr node_pid="0">
+              <th>微信资料</th>
+              <th>手机</th>
+              <th>小猴开门资料</th>
+              <th>课程管理</th>
+              <th>操作</th>
+             </tr>
+              <?php foreach ($userall as $k => $v): ?>
+              <?php  $t = substr($v['status'],0,1);  $b = substr($v['status'],1,1);  $y = substr($v['status'],2,1); ?>
+              <?php if ($t == '0'): ?>
+              <tr>
+              <td style="width:90px;"><img src="<?php echo $v['wx_img']; ?>" height="30" width="30" alt=""><?php echo $v['wx_name']; ?></td>
+              <td style="width:200px;"><?php echo $v['user_phone']; ?></td>
+              <td style="width:200px;"><img src="<?php echo $v['user_img']; ?>" height="30" width="30" alt=""><?php echo $v['user_name']; ?></td>
+              <td style="width:200px;">
+            
+              <?php   foreach ($courseall as $key => $val): ?>
+
+                <?php  $t = substr($v['status'],$key,1); ?>
+                <input type="checkbox" value="" <?php if($t == 1) echo 'checked disabled="true"'; ?> />
+                 <?php if ($t == '0'): ?>
+                <a href="updateuser?user_id=<?php echo $v['user_id'] ; ?>&type=<?php echo $key; ?>&course_id=<?php echo $val['course_id']; ?>"><?php echo $val['course_name']; ?></a>
+                <?php else : ?>
+                <?php echo $val['course_name']; ?>
+               <?php endif; ?>
+            
+<?php endforeach; ?>
+
+              </td>
+             <td style="width:100px;"><a href="followlist?user_id=<?php echo $v['user_id'] ; ?>">跟进记录</a>||<a href="follow?user_id=<?php echo $v['user_id'] ; ?>">跟进</a>||<a href="refund?user_id=<?php echo $v['user_id'] ; ?>">退款</a></td>
+             </tr>
+         
+              <?php endif; ?>
+            <?php endforeach; ?>
+            </table>
+        </div>
+
+        <div rel='tab-2'> 
+          <table class="table">
+            <tr node_pid="0">
+              <th>微信资料</th>
+              <th>手机</th>
+              <th>小猴开门资料</th>
+              <th>课程管理</th>
+              <th>操作</th>
+             </tr>
+              <?php foreach ($userall as $k => $v): ?>
+              <?php  $t = substr($v['status'],0,1);  $b = substr($v['status'],1,1);  $y = substr($v['status'],2,1); ?>
+              <?php if ($t == '1'): ?>
+              <tr>
+              <td style="width:90px;"><img src="<?php echo $v['wx_img']; ?>" height="30" width="30" alt=""><?php echo $v['wx_name']; ?></td>
+              <td style="width:200px;"><?php echo $v['user_phone']; ?></td>
+              <td style="width:200px;"><img src="<?php echo $v['user_img']; ?>" height="30" width="30" alt=""><?php echo $v['user_name']; ?></td>
+              <td style="width:200px;">
+            
+               <?php   foreach ($courseall as $key => $val): ?>
+
+                <?php  $t = substr($v['status'],$key,1); ?>
+                <input type="checkbox" value="" <?php if($t == 1) echo 'checked disabled="true"'; ?> />
+                 <?php if ($t == '0'): ?>
+                <a href="updateuser?user_id=<?php echo $v['user_id'] ; ?>&type=<?php echo $key; ?>&course_id=<?php echo $val['course_id']; ?>"><?php echo $val['course_name']; ?></a>
+                <?php else : ?>
+                <?php echo $val['course_name']; ?>
+               <?php endif; ?>
+            
+<?php endforeach; ?>
+
+              </td>
+             <td style="width:100px;"><a href="followlist?user_id=<?php echo $v['user_id'] ; ?>">跟进记录</a>||<a href="follow?user_id=<?php echo $v['user_id'] ; ?>">跟进</a>||<a href="refund?user_id=<?php echo $v['user_id'] ; ?>">退款</a></td>
+             </tr>
+         
+              <?php endif; ?>
+            <?php endforeach; ?>
+            </table>
+        </div>
+
+        <div rel='tab-3'> 
+          <table class="table">
+             <tr node_pid="0">
+              <th>微信资料</th>
+              <th>手机</th>
+              <th>小猴开门资料</th>
+              <th>课程管理</th>
+              <th>操作</th>
+             </tr>
+             <?php foreach ($userall as $k => $v): ?>
+              <?php  $t = substr($v['status'],0,1);  $b = substr($v['status'],1,1);  $y = substr($v['status'],2,1); ?>
+              <?php if ($b == '1'): ?>
+              <tr>
+              <td style="width:90px;"><img src="<?php echo $v['wx_img']; ?>" height="30" width="30" alt=""><?php echo $v['wx_name']; ?></td>
+              <td style="width:200px;"><?php echo $v['user_phone']; ?></td>
+              <td style="width:200px;"><img src="<?php echo $v['user_img']; ?>" height="30" width="30" alt=""><?php echo $v['user_name']; ?></td>
+              <td style="width:200px;">
+            
+         <?php   foreach ($courseall as $key => $val): ?>
+
+                <?php  $t = substr($v['status'],$key,1); ?>
+                <input type="checkbox" value="" <?php if($t == 1) echo 'checked disabled="true"'; ?> />
+                 <?php if ($t == '0'): ?>
+                <a href="updateuser?user_id=<?php echo $v['user_id'] ; ?>&type=<?php echo $key; ?>&course_id=<?php echo $val['course_id']; ?>"><?php echo $val['course_name']; ?></a>
+                <?php else : ?>
+                <?php echo $val['course_name']; ?>
+               <?php endif; ?>
+            
+<?php endforeach; ?>
+
+
+              </td>
+              <td style="width:100px;"><a href="followlist?user_id=<?php echo $v['user_id'] ; ?>">跟进记录</a>||<a href="follow?user_id=<?php echo $v['user_id'] ; ?>">跟进</a>||<a href="refund?user_id=<?php echo $v['user_id'] ; ?>">退款</a></td>
+             </tr>
+         
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </table>
+        </div>
+
+        <div rel='tab-4'> 
+          <table class="table">
+             <tr node_pid="0">
+              <th>微信资料</th>
+              <th>手机</th>
+              <th>小猴开门资料</th>
+              <th>课程管理</th>
+              <th>操作</th>
+             </tr>
+             <?php foreach ($userall as $k => $v): ?>
+              <?php  $t = substr($v['status'],0,1);  $b = substr($v['status'],1,1);  $y = substr($v['status'],2,1); ?>
+              <?php if ($y == '1'): ?>
+              <tr>
+              <td style="width:90px;"><img src="<?php echo $v['wx_img']; ?>" height="30" width="30" alt=""><?php echo $v['wx_name']; ?></td>
+              <td style="width:200px;"><?php echo $v['user_phone']; ?></td>
+              <td style="width:200px;"><img src="<?php echo $v['user_img']; ?>" height="30" width="30" alt=""><?php echo $v['user_name']; ?></td>
+              <td style="width:200px;">
+            
+               <?php   foreach ($courseall as $key => $val): ?>
+
+                <?php  $t = substr($v['status'],$key,1); ?>
+                <input type="checkbox" value="" <?php if($t == 1) echo 'checked disabled="true"'; ?> />
+                 <?php if ($t == '0'): ?>
+                <a href="updateuser?user_id=<?php echo $v['user_id'] ; ?>&type=<?php echo $key; ?>&course_id=<?php echo $val['course_id']; ?>"><?php echo $val['course_name']; ?></a>
+                <?php else : ?>
+                <?php echo $val['course_name']; ?>
+               <?php endif; ?>
+            
+<?php endforeach; ?>
+
+              </td>
+             <td style="width:100px;"><a href="followlist?user_id=<?php echo $v['user_id'] ; ?>">跟进记录</a>||<a href="follow?user_id=<?php echo $v['user_id'] ; ?>">跟进</a>||<a href="refund?user_id=<?php echo $v['user_id'] ; ?>">退款</a></td>
+             </tr>
+         
+              <?php endif; ?>
+            <?php endforeach; ?>
+            </table>
+        </div>
+
+        <div rel='tab-5'>
+            <table class="table">
+             <tr node_pid="0">
+              <th>微信资料</th>
+              <th>手机</th>
+              <th>小猴开门资料</th>
+              <th>课程管理</th>
+              <th>操作</th>
+             </tr>
+            <?php foreach ($userall as $k => $v): ?>
+             <tr>
+              <td style="width:90px;"><img src="<?php echo $v['wx_img']; ?>" height="30" width="30" alt=""><?php echo $v['wx_name']; ?></td>
+              <td style="width:200px;"><?php echo $v['user_phone']; ?></td>
+              <td style="width:200px;"><img src="<?php echo $v['user_img']; ?>" height="30" width="30" alt=""><?php echo $v['user_name']; ?></td>
+              <td style="width:200px;">
+
+<?php   foreach ($courseall as $key => $val): ?>
+
+                <?php  $t = substr($v['status'],$key,1); ?>
+                <input type="checkbox" value="" <?php if($t == 1) echo 'checked disabled="true"'; ?> />
+                 <?php if ($t == '0'): ?>
+                <a href="updateuser?user_id=<?php echo $v['user_id'] ; ?>&type=<?php echo $key; ?>&course_id=<?php echo $val['course_id']; ?>"><?php echo $val['course_name']; ?></a>
+                <?php else : ?>
+                <?php echo $val['course_name']; ?>
+               <?php endif; ?>
+            
+<?php endforeach; ?>
+
+
+              </td>
+              <td style="width:100px;"><a href="followlist?user_id=<?php echo $v['user_id'] ; ?>">跟进记录</a>||<a href="follow?user_id=<?php echo $v['user_id'] ; ?>">跟进</a>||<a href="refund?user_id=<?php echo $v['user_id'] ; ?>">退款</a></td>
+             </tr>
+            <?php endforeach; ?>
+            </table>
+
+              <aside class="paging">
+  
+      <?php  for ($i=0; $i < $page; $i++): ?> 
+
+
+     <a href="contentpage?page=<?php echo $i; ?>"><?php  echo $i; ?></a>
+
+    <?php endfor; ?>
+    
+      </aside>
+
+
+
+        </div>
+
+    </div>
+       
+
+</section>
+   <script type="text/javascript">
+    tabs_takes.init("tabs");
+</script>

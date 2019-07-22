@@ -1,0 +1,92 @@
+    
+
+ <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">编辑朗读题</strong></h2>
+      <ul class="ulColumn2">
+
+<p id="progress">
+
+  <p id="finish" style="width: 0%;" progress="0"></p>
+
+</p>
+
+      <form action="class_read" method="post"  enctype="multipart/form-data" id="form">
+       <li>
+        <span class="item_name" style="width:120px;">题目序号：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="topic_desc" />
+         <input name="class_id" value="<?php  echo $class_id; ?>" hidden />
+       </li>
+	 	<li>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="option[][option_name]" />
+			<input type="file" id="sound" class="0"> 
+			<input id="soundurl0" name="option[0][url]" value="" />
+       </li>
+ 		<li>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="option[][option_name]" />
+			<input type="file" id="sound" class="1">   
+			<input id="soundurl1" name="option[1][url]" value="" />
+       </li>
+ 		<li>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="option[][option_name]" />
+			<input type="file" id="sound" class="2">   
+			<input id="soundurl2" name="option[2][url]" value="" />
+       </li>
+ 		<li class="box">
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="option[][option_name]" />
+			<input type="file" id="sound" class="3">  
+			<input id="soundurl3" name="option[3][url]" value="" />
+       </li>
+	 	<li>
+       <span class="dj" style="width:20px;height: 20px;background: orange;margin-right: 10px;">&nbsp;+ &nbsp;</span>
+       </li>
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+      </ul>
+     </section>
+
+   <script type="text/javascript">
+   	num = 3;
+ 	 $('.dj').click(function () {
+ 	 	num++;
+        $('.box').append('<li class="rep" > <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="option['+num+'][option_name]" /><input type="file" id="sound" class='+num+' > <input id="soundurl'+num+'" name="option['+num+'][url]" value="" />  <a style="float: left;margin-top: 10px;" onclick="deleteRow($(this));">删除</a></li>   ');
+    });
+
+	function deleteRow(obj) {
+	    obj.parents(".rep").remove();
+	}
+
+    var client = new OSS.Wrapper({
+    region: "oss-cn-beijing",
+    accessKeyId: "LTAIQWfZax1hLcmH",
+    accessKeySecret: "MZCaAEyJYoCiOXv3ZScpQInkXJmLZV",
+    bucket: "kkmandarin",
+    secure:true
+  });
+  //上传视频
+ 	$("#form").on('change','#sound',function(){
+ 		var num = this.className
+ 		console.log(this.className)
+
+    var file = document.getElementById("sound").files[0];
+ 
+    var val = 'poetry/sound/'+document.getElementById("sound").value;
+       client.multipartUpload(val, file).then(function (result) {
+            path = result.res.requestUrls[0].split("?")[0]
+
+        	$("#soundurl"+num).attr('value',path); 
+        	console.log($("#soundurl"+num))
+
+    }).catch(function (err) {
+      console.log(err);
+    });
+  });
+</script>

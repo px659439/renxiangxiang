@@ -1,0 +1,63 @@
+    
+
+ <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">编辑选择题</strong></h2>
+      <ul class="ulColumn2">
+
+<p id="progress">
+
+  <p id="finish" style="width: 0%;" progress="0"></p>
+
+</p>
+
+      <form action="class_choice" method="post"  enctype="multipart/form-data">
+       <li>
+        <span class="item_name" style="width:120px;">题目序号：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="topic_desc" />
+         <input name="class_id" value="<?php  echo $class_id; ?>" hidden />
+       </li>
+
+        <li>
+        <span class="item_name" style="width:120px;">题目：</span>
+        <textarea placeholder="摘要信息" name="topic_name" class="textarea" style="width:500px;height:100px;"></textarea>
+       </li>
+	  <li>
+        <span class="item_name" style="width:120px;">栏位：</span>
+        <label class="single_selection"><input type="radio" name="hurdles" value="1" checked/>一栏</label>
+        <label class="single_selection"><input type="radio" name="hurdles" value="2" />二栏</label>
+       </li>
+	 <li>
+        <span class="item_name" style="width:120px;">A：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="option[][option_name]" />
+        <label class="single_selection"><input type="radio" name="option[0][option_if]" value="1" />设为正确答案</label>
+       </li>
+ 		<li>
+        <span class="item_name" style="width:120px;">B：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="option[][option_name]" />
+         <label class="single_selection"><input type="radio" name="option[1][option_if]" value="1" />设为正确答案</label>
+       </li>
+ 		<li>
+        <span class="item_name" style="width:120px;">C：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="option[][option_name]" />
+         <label class="single_selection"><input type="radio" name="option[2][option_if]" value="1" />设为正确答案</label>
+       </li>
+ 		<li>
+        <span class="item_name" style="width:120px;">D：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="option[][option_name]" />
+         <label class="single_selection"><input type="radio" name="option[3][option_if]" value="1" />设为正确答案</label>
+       </li>
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+      </ul>
+     </section>
+
+   

@@ -1,0 +1,29 @@
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">内容管理--开通课程</strong></h2>
+
+      <div class="page_title">
+      
+      
+      </div>
+      <table class="table">
+       <tr node_pid="0">
+        <th>微信头像</th>
+        <th>微信昵称</th>
+        <th>手机号</th>
+        <th>开通课程</th>
+
+       </tr>
+        <?php foreach ($userall as $k => $v): ?>
+       <th>	<img src="<?php echo $v['wx_img']; ?>" height="30" width="30" alt=""></th>
+        <th><?php  echo $v['wx_name'];  ?></th>
+        <th><?php  echo $v['user_moblic'];  ?></th>
+        <th><a href="courseall?user_id=<?php echo $v['user_id']; ?>" class="inner_btn">开通课程</a></th>
+       
+       </tr>
+     <?php endforeach; ?>
+      </table>
+     </section>
+
+
+       
+

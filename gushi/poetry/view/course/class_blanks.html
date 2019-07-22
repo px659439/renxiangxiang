@@ -1,0 +1,208 @@
+    
+
+ <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">编辑填空题</strong></h2>
+      <ul class="ulColumn2">
+
+<p id="progress">
+
+  <p id="finish" style="width: 0%;" progress="0"></p>
+
+</p>
+
+      <form action="class_blanks" method="post"  enctype="multipart/form-data">
+       <li>
+        <span class="item_name" style="width:120px;">题目序号：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="topic_desc" />
+         <input name="class_id" value="<?php  echo $class_id; ?>" hidden />
+       </li>
+
+        <li>
+        <span class="item_name" style="width:120px;">题目：</span>
+        <textarea placeholder="摘要信息" name="topic_name" class="textarea" style="width:500px;height:100px;"></textarea>
+       </li>
+	
+
+
+	     <li class="box">
+        <span class="item_name" style="width:120px;">空格1候选答案：</span>
+         <input type="text" size="8"  name="option[0][0][blanks]" value="1" hidden />
+        <input type="text" size="8"  name="option[0][0][option_name]" />
+        <input class="jia" type="radio" name="option[0][0][option_if]" value="1" />
+        
+          <input type="text" size="8"  name="option[0][1][blanks]" value="1" hidden/>
+         <input type="text" size="8"  name="option[0][1][option_name]" />
+        <input class="jia" type="radio" name="option[0][1][option_if]" value="1" />
+
+      <input type="text" size="8"  name="option[0][2][blanks]" value="1" hidden/>
+         <input type="text" size="8"  name="option[0][2][option_name]" />
+        <input class="jia" type="radio" name="option[0][2][option_if]" value="1" />
+
+        <input type="text" size="8"  name="option[0][3][blanks]" value="1" hidden/>
+         <input type="text" size="8"  name="option[0][3][option_name]" />
+        <input class="jia" type="radio" name="option[0][3][option_if]" value="1" />
+       设为正确答案
+      
+       </li>
+
+
+
+         <li class="box">
+        
+        <span class="item_name" style="width:120px;">空格2候选答案：</span>
+          <input type="text" size="8"  name="option[1][0][blanks]" value="2" hidden/>
+        <input type="text" size="8"  name="option[1][0][option_name]" />
+        <input class="jia" type="radio" name="option[1][0][option_if]" value="1" />
+      
+
+         <input type="text" size="8"  name="option[1][1][blanks]" value="2" hidden/>
+         <input type="text" size="8"  name="option[1][1][option_name]" />
+        <input class="jia" type="radio" name="option[1][1][option_if]" value="1" />
+
+        <input type="text" size="8"  name="option[1][2][blanks]" value="2" hidden/>
+         <input type="text" size="8"  name="option[1][2][option_name]" />
+        <input class="jia" type="radio" name="option[1][2][option_if]" value="1" />
+
+        <input type="text" size="8"  name="option[1][3][blanks]" value="2" hidden/>
+         <input type="text" size="8"  name="option[1][3][option_name]" />
+        <input class="jia" type="radio" name="option[1][3][option_if]" value="1" />
+       设为正确答案
+     
+       </li>
+
+
+
+         <li class="box">
+        
+        <span class="item_name" style="width:120px;">空格3候选答案：</span>
+
+         <input type="text" size="8"  name="option[2][0][blanks]" value="3" hidden/>
+        <input type="text" size="8"  name="option[2][0][option_name]" />
+        <input class="jia" type="radio" name="option[2][0][option_if]" value="1" />
+      
+
+        <input type="text" size="8"  name="option[2][1][blanks]" value="3" hidden/>
+         <input type="text" size="8"  name="option[2][1][option_name]" />
+        <input class="jia" type="radio" name="option[2][1][option_if]" value="1" />
+
+          <input type="text" size="8"  name="option[2][2][blanks]" value="3" hidden/>
+         <input type="text" size="8"  name="option[2][2][option_name]" />
+        <input class="jia" type="radio" name="option[2][2][option_if]" value="1" />
+
+        <input type="text" size="8"  name="option[2][3][blanks]" value="3" hidden/>
+         <input type="text" size="8"  name="option[2][3][option_name]" />
+        <input class="jia" type="radio" name="option[2][3][option_if]" value="1" />
+       设为正确答案
+      
+       </li>
+
+
+
+         <li class="box">
+        
+        <span class="item_name" style="width:120px;">空格4候选答案：</span>
+         <input type="text" size="8"  name="option[3][0][blanks]" value="4" hidden/>
+         <input type="text" size="8"  name="option[3][0][option_name]" />
+        <input class="jia" type="radio" name="option[3][0][option_if]" value="1" />
+      
+       <input type="text" size="8"  name="option[3][1][blanks]" value="4" hidden/>
+         <input type="text" size="8"  name="option[3][1][option_name]" />
+        <input class="jia" type="radio" name="option[3][1][option_if]" value="1" />
+
+        <input type="text" size="8"  name="option[3][2][blanks]" value="4" hidden/>
+         <input type="text" size="8"  name="option[3][2][option_name]" />
+        <input class="jia" type="radio" name="option[3][2][option_if]" value="1" />
+
+          <input type="text" size="8"  name="option[3][3][blanks]" value="4" hidden/>
+         <input type="text" size="8"  name="option[3][3][option_name]" />
+        <input class="jia" type="radio" name="option[3][3][option_if]" value="1" />
+       设为正确答案
+       
+       </li>
+
+
+    <li class="box">
+        
+        <span class="item_name" style="width:120px;">空格5候选答案：</span>
+
+         <input type="text" size="8"  name="option[4][0][blanks]" value="5" hidden/>
+         <input type="text" size="8"  name="option[4][0][option_name]" />
+        <input class="jia" type="radio" name="option[4][0][option_if]" value="1" />
+      
+       <input type="text" size="8"  name="option[4][1][blanks]" value="5" hidden/>
+         <input type="text" size="8"  name="option[4][1][option_name]" />
+        <input class="jia" type="radio" name="option[4][1][option_if]" value="1" />
+
+          <input type="text" size="8"  name="option[4][2][blanks]" value="5" hidden/>
+         <input type="text" size="8"  name="option[4][2][option_name]" />
+        <input class="jia" type="radio" name="option[4][2][option_if]" value="1" />
+
+          <input type="text" size="8"  name="option[4][3][blanks]" value="5" hidden/>
+         <input type="text" size="8"  name="option[4][3][option_name]" />
+        <input class="jia" type="radio" name="option[4][3][option_if]" value="1" />
+       设为正确答案
+       
+       </li>
+
+    <li class="box">
+        
+        <span class="item_name" style="width:120px;">空格6候选答案：</span>
+
+         <input type="text" size="8"  name="option[5][0][blanks]" value="6" hidden/>
+         <input type="text" size="8"  name="option[5][0][option_name]" />
+        <input class="jia" type="radio" name="option[5][0][option_if]" value="1" />
+      
+       <input type="text" size="8"  name="option[5][1][blanks]" value="6" hidden/>
+         <input type="text" size="8"  name="option[5][1][option_name]" />
+        <input class="jia" type="radio" name="option[5][1][option_if]" value="1" />
+
+        <input type="text" size="8"  name="option[5][2][blanks]" value="6" hidden/>
+         <input type="text" size="8"  name="option[5][2][option_name]" />
+        <input class="jia" type="radio" name="option[5][2][option_if]" value="1" />
+
+        <input type="text" size="8"  name="option[5][3][blanks]" value="6" hidden/>
+         <input type="text" size="8"  name="option[5][3][option_name]" />
+        <input class="jia" type="radio" name="option[5][3][option_if]" value="1" />
+       设为正确答案
+       
+       </li>
+
+
+      <li class="box">
+        
+        <span class="item_name" style="width:120px;">空格7候选答案：</span>
+
+         <input type="text" size="8"  name="option[6][0][blanks]" value="7" hidden/>
+         <input type="text" size="8"  name="option[6][0][option_name]" />
+        <input class="jia" type="radio" name="option[6][0][option_if]" value="1" />
+      
+        <input type="text" size="8"  name="option[6][1][blanks]" value="7" hidden/>
+         <input type="text" size="8"  name="option[6][1][option_name]" />
+        <input class="jia" type="radio" name="option[6][1][option_if]" value="1" />
+
+        <input type="text" size="8"  name="option[6][2][blanks]" value="7" hidden/>
+         <input type="text" size="8"  name="option[6][2][option_name]" />
+        <input class="jia" type="radio" name="option[6][2][option_if]" value="1" />
+
+          <input type="text" size="8"  name="option[6][3][blanks]" value="7" hidden/>
+         <input type="text" size="8"  name="option[6][3][option_name]" />
+        <input class="jia" type="radio" name="option[6][3][option_if]" value="1" />
+       设为正确答案
+       
+       </li>
+ 	
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+      </ul>
+     </section>
+
+   

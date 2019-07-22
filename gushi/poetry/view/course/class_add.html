@@ -1,0 +1,73 @@
+    
+
+ <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">课节管理--课节添加</strong></h2>
+      <ul class="ulColumn2">
+
+<p id="progress">
+
+  <p id="finish" style="width: 0%;" progress="0"></p>
+
+</p>
+
+      <form action="class_add" method="post"  enctype="multipart/form-data">
+       <li>
+        <span class="item_name" style="width:120px;">课节名称：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="class_name" />
+       <!--  <span class="errorTips">错误提示信息...</span> -->
+       </li>
+
+       <li>
+        <span class="item_name" style="width:120px;">作者：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="class_author" />
+       <!--  <span class="errorTips">错误提示信息...</span> -->
+       </li>
+       <li>
+        <span class="item_name" style="width:120px;">课节视频：</span>
+        <label class="uploadImg">
+        <input type="file" id="video"> 
+        <span>上传视频</span>
+         <input id="videourl" name="class_url" value="" hidden />
+         <video height="100" width="100" id='filevideo' src=""></video>
+        </label> 
+       </li>
+    
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+      </ul>
+     </section>
+<script type="text/javascript">
+ 
+    var client = new OSS.Wrapper({
+    region: "oss-cn-beijing",
+    accessKeyId: "LTAIQWfZax1hLcmH",
+    accessKeySecret: "MZCaAEyJYoCiOXv3ZScpQInkXJmLZV",
+    bucket: "kkmandarin",
+    secure:true
+  });
+
+  //上传视频
+    document.getElementById('video').addEventListener('change', function (e) {
+    var file = document.getElementById("video").files[0];
+      console.log(document.getElementById("video"))
+    var val = 'poetry/video/'+document.getElementById("video").value;
+       client.multipartUpload(val, file).then(function (result) {
+            path = result.res.requestUrls[0].split("?")[0]
+          $("#filevideo").attr('src',path); 
+          $("#videourl").attr('value',path); 
+
+    }).catch(function (err) {
+      console.log(err);
+    });
+  });
+</script>
+   

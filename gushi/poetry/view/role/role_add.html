@@ -1,0 +1,72 @@
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">权限管理--权限添加</strong></h2>
+      <ul class="ulColumn2">
+      <form action="role_add" method="post">
+       <li>
+        <span class="item_name" style="width:120px;">角色名称：</span>
+        <input type="text" class="textbox textbox_295" placeholder="文本信息提示..." name="role_name" />
+       <!--  <span class="errorTips">错误提示信息...</span> -->
+       </li>
+       
+        <li>
+        <span class="item_name" style="width:120px;">所属权限：</span>
+        <table style="margin-left: 120px">
+      
+        	<?php foreach ($node_lists as $k => $v): ?>
+          <tr>
+            <td><label class="single_selection"><input type="checkbox" name="node_id[]" class="parent" value="{$v.node_id}">{$v.node_name}</label></td>
+            <td>
+            <?php foreach ($v['son'] as $k => $vo): ?>
+            <label class="single_selection"><input type="checkbox" name="node_id[]" class="son" value="{$vo.node_id}">{$vo.node_name} </label> <?php endforeach; ?></td>
+           
+          </tr>
+          <?php endforeach; ?>
+        </table>
+
+       </li>
+       <li>
+        <span class="item_name" style="width:120px;">角色简介：</span>
+        <textarea placeholder="摘要信息" class="textarea" style="width:500px;height:100px;" name="role_desc"></textarea>
+       </li>
+       <li>
+        <span class="item_name" style="width:120px;">是否展示：</span>
+        <label class="single_selection"><input type="radio" name="role_status" value="1" />是</label>
+        <label class="single_selection"><input type="radio" name="role_status" value="0" />否</label>
+       </li>
+  
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+      </ul>
+     </section>
+
+     <script>
+    $(function(){
+        $(".parent").click(function(){
+
+         $(this).parents("tr").find(".son").prop("checked",$(this).prop("checked"))
+            
+        })
+  
+       $(".son").click(function(){
+
+    
+           if($(this).prop("checked")){
+
+              $(this).parents("tr").find(".parent").prop("checked",true);
+
+           }else{
+        
+            if($(this).parent().siblings().find("input:checked").size()==0){
+
+               $(this).parents("tr").find(".parent").prop("checked",false);
+            }
+             
+            }
+
+           })
+       })
+   
+     </script>

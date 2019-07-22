@@ -1,0 +1,38 @@
+   <section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">账号设置</strong></h2>
+      <ul class="ulColumn2">
+      <form action="../Index/account" method="post">
+       <li>
+        <span class="item_name" style="width:120px;">管理员名称：</span>
+        <input type="text" class="textbox textbox_295" placeholder="<?php  echo $adminlist['admin_name']?>" name="admin_name" />
+       <!--  <span class="errorTips">错误提示信息...</span> -->
+       </li>
+
+       <li>
+        <span class="item_name" style="width:120px;">管理员密码：</span>
+        <input type="password" class="textbox textbox_295" placeholder="******" name="admin_pwd" />
+       <!--  <span class="errorTips">错误提示信息...</span> -->
+       </li>
+
+
+   		<li>
+        <span class="item_name" style="width:120px;">电话号：</span>
+        <input type="telephone" class="textbox textbox_295" placeholder="<?php  echo $adminlist['admin_tel']?>" name="admin_tel"/>
+       <!--  <span class="errorTips">错误提示信息...</span> -->
+       </li>
+      	<li>
+        <span class="item_name" style="width:120px;">邮箱：</span>
+        <input type="mailbox" class="textbox textbox_295" placeholder="<?php  echo $adminlist['admin_mail']?>" name="admin_mail" />
+       <!--  <span class="errorTips">错误提示信息...</span> -->
+       </li>
+
+
+       <li>
+        <span class="item_name" style="width:120px;"></span>
+        <input type="submit" class="link_btn"/>
+       </li>
+       </form>
+      </ul>
+     </section>
+
+   

@@ -1,0 +1,30 @@
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">班级管理--学员列表</strong></h2>
+      <div class="page_title">
+      
+     
+      </div>
+      <table class="table">
+       <tr node_pid="0">
+    
+        <th>微信资料</th>
+        <th>手机号</th>
+        <th>操作</th>
+
+       </tr>
+        <?php  foreach ($userlist as $k => $v): ?>
+     
+       <tr>
+       
+        <td style="width:90px;">  <img src="<?php echo $v['wx_img']; ?>" alt="" style="width:16px; height:16px"> <?php echo $v['wx_name']; ?></td>
+        <td style="width:200px;"><?php echo $v['user_phone']; ?></td>
+        <td style="width:200px;">
+         <a href="user_del?c_id=<?php echo $c_id; ?>&user_id=<?php  echo $v['user_id'];?>" class="inner_btn">移除班级</a>
+        </td>
+       </tr>
+     <?php endforeach; ?>
+      </table>
+
+     </section>
+
+    

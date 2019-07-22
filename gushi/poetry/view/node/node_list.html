@@ -1,0 +1,65 @@
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">权限管理--权限展示</strong></h2>
+      <div class="page_title">
+      
+     <!--   <a class="fr top_rt_btn">右侧按钮</a> -->
+      </div>
+      <table class="table">
+       <tr node_pid="0">
+        <th></th>
+        <th>权限名称</th>
+        <th>控制器</th>
+        <th>方法（函数）</th>
+        <th>状态</th>
+        <th>操作</th>
+       </tr>
+       	 <?php foreach ($nodes as $k => $v): ?>
+       <tr node_pid ="<?php echo $v['node_pid']; ?>" node_id = "<?php echo $v['node_id']; ?>">
+        <td style="width:50px;"><span>[+]</span></td>
+        <td style="width:200px;"><?php echo str_repeat("★★",$v['level']);?><?php echo $v['node_name']; ?></td>
+        <td style="width:200px;"><?php echo $v['node_controller']; ?></td>
+        <td style="width:150px;"><?php echo $v['node_method']; ?></td>
+        <td style="width:200px;">
+			  <?php if ($v['node_status'] == '1'): ?>
+			 	展示中
+			  <?php else : ?>
+ 				不展示
+			  <?php endif; ?>
+    </td>
+        <td style="width:100px;">
+         <a href="node_delete?node_id=<?php echo $v['node_id']; ?>" class="inner_btn">删除</a>
+        </td>
+       </tr>
+     <?php endforeach; ?>
+      </table>
+   <!--    <aside class="paging">
+       <a>第一页</a>
+       <a>1</a>
+       <a>2</a>
+       <a>3</a>
+       <a>…</a>
+       <a>1004</a>
+       <a>最后一页</a>
+      </aside> -->
+     </section>
+     <script src="../jquery/jquery-1.7.2.min.js"></script>
+     <script>
+   $(function(){
+
+      $("tr[node_pid!=0]").hide();
+      $("tr span").toggle(function(){
+            $(this).html("[--]");
+        var node_id = $(this).parents("tr").attr("node_id");
+
+         $("tr[node_pid='"+node_id+"']").show();
+            
+      },function(){
+           $(this).html("[+]");
+            var node_id = $(this).parents("tr").attr("node_id");
+
+         $("tr[node_pid='"+node_id+"']").hide(); 
+      });
+
+   })
+
+     </script>

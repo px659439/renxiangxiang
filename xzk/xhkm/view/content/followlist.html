@@ -1,0 +1,20 @@
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">内容管理--跟进记录</strong></h2>
+      <div class="page_title">
+      </div>
+      <table class="table">
+      	<tr>
+        <td style="width:350px;">跟进记录</td>
+        <td style="width:80px;">时间</td>
+   		<td style="width:80px;">老师</td>
+       </tr>
+        <?php foreach ($record as $k => $v): ?>
+       <tr>
+        <td style="width:350px;"><?php echo $v['record_comment']; ?></td>
+        <td style="width:80px;"><?php echo date("Y/m/d H:i:s",$v['record_time']) ?></td>
+   		<td style="width:80px;"><?php echo $v['admin_name']; ?></td>
+       </tr>
+     <?php endforeach; ?>
+      </table>
+ 
+     </section>

@@ -1,0 +1,116 @@
+<section class="rt_wrap content mCustomScrollbar">
+      <h2><strong style="color:grey;">课程管理--课程展示</strong></h2>
+     
+
+ <div class='tabs' id="tabs">
+        <ul class='horizontal'>
+            <li rel="tab-1">体验课</li>
+            <li rel="tab-2">正式课</li>
+            <li rel="tab-3" class="selectActive">全部课程</li>
+        </ul>
+
+        <div rel='tab-1'> 
+             <table class="table">
+             <tr node_pid="0">
+              <th>课程名称</th>
+              <th>课程类型</th>
+              <th>课程位置</th>
+              <th>课程封面图</th>
+              <th>课程介绍封面图</th>
+              <th>课程介绍文案</th>
+              <th>操作</th>
+             </tr>
+              <?php foreach ($course as $k => $v): ?>
+             <?php if ($v['cour_type'] == '1' or  $v['cour_type'] == '3' ): ?>
+             <tr course_id = "<?php echo $v['cour_id']; ?>">
+              <th><?php echo $v['cour_name']; ?></th>
+
+                <?php if ($v['cour_type'] == '1'): ?>
+                   <th>体验课</th>
+              <?php elseif($v['cour_type'] == '3') : ?>
+                    <th>解锁课</th>
+              <?php endif; ?>
+
+              <th><?php echo $v['cour_desc']; ?></th>
+              <th><img height="100" width="100" src="<?php echo $v['cour_img']; ?>" alt=""></th>
+              <th><img height="100" width="100" src="<?php echo $v['introduceimg']; ?>" alt=""></th>
+              <th><?php echo $v['introduce']; ?></th>
+              <th><a href="course_delete?cour_id=<?php echo $v['cour_id']; ?>" class="inner_btn">删除</a>||<a href="editclass?cour_id=<?php echo $v['cour_id']; ?>" class="inner_btn">编辑课节</a></th>
+             </tr>
+             <?php endif; ?>
+           <?php endforeach; ?>
+            </table>
+        </div>
+
+        <div rel='tab-2'> 
+                <table class="table">
+                 <tr node_pid="0">
+              
+                  <th>课程名称</th>
+                  <th>课程位置</th>
+                  <th>课程封面图</th>
+                  <th>课程介绍封面图</th>
+                  <th>课程介绍文案</th>
+                  <th>操作</th>
+                 </tr>
+                  <?php foreach ($course as $k => $v): ?>
+                <?php if ($v['cour_type'] == '2'): ?>
+
+             <tr course_id = "<?php echo $v['cour_id']; ?>">
+              <th><?php echo $v['cour_name']; ?></th>
+              <th><?php echo $v['cour_desc']; ?></th>
+              <th><img height="100" width="100" src="<?php echo $v['cour_img']; ?>" alt=""></th>
+              <th><img height="100" width="100" src="<?php echo $v['introduceimg']; ?>" alt=""></th>
+              <th><?php echo $v['introduce']; ?></th>
+              <th><a href="course_delete?cour_id=<?php echo $v['cour_id']; ?>" class="inner_btn">删除</a>||<a href="editclass?cour_id=<?php echo $v['cour_id']; ?>" class="inner_btn">编辑课节</a></th>
+             </tr>
+               <?php endif; ?>
+               <?php endforeach; ?>
+                </table>
+        </div>
+
+   <div rel='tab-3'> 
+                    <table class="table">
+                 <tr node_pid="0">
+              
+                  <th>课程名称</th>
+                  <th>课程类型</th>
+                  <th>课程位置</th>
+                  <th>课程封面图</th>
+                  <th>课程介绍封面图</th>
+                  <th>课程介绍文案</th>
+                  <th>操作</th>
+                 </tr>
+                  <?php foreach ($course as $k => $v): ?>
+               
+                
+             <tr course_id = "<?php echo $v['cour_id']; ?>">
+             
+              <th><?php echo $v['cour_name']; ?></th>
+              
+           <?php if ($v['cour_type'] == '1'): ?>
+                   <th>体验课</th>
+            <?php elseif($v['cour_type'] == '2') : ?>
+                  <th>正式课</th>
+            <?php elseif($v['cour_type'] == '3') : ?>
+                  <th>解锁课</th>
+            <?php endif; ?>
+              <th><?php echo $v['cour_desc']; ?></th>
+              <th><img height="100" width="100" src="<?php echo $v['cour_img']; ?>" alt=""></th>
+              <th><img height="100" width="100" src="<?php echo $v['introduceimg']; ?>" alt=""></th>
+              <th><?php echo $v['introduce']; ?></th>
+              <th><a href="course_delete?cour_id=<?php echo $v['cour_id']; ?>" class="inner_btn">删除</a>||<a href="editclass?cour_id=<?php echo $v['cour_id']; ?>" class="inner_btn">编辑课节</a></th>
+
+             </tr>
+               <?php endforeach; ?>
+                </table>
+        </div>
+
+
+    </div>
+    
+     </section>
+
+   <script type="text/javascript">
+    tabs_takes.init("tabs");
+</script>

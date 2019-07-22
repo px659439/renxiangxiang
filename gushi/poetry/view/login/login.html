@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>AdminKK | Login</title>
+<meta name="author" content="DeathGhost" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+<style>
+body{height:100%;background:#16a085;overflow:hidden;}
+canvas{z-index:-1;position:absolute;}
+#myCanvas{position:absolute;}
+</style>
+<script src="../js/jquery.js"></script>
+<script src="../js/Particleground.js"></script>
+<script>
+$(document).ready(function() {
+  //粒子背景特效
+  $('body').particleground({
+    dotColor: '#5cbdaa',
+    lineColor: '#5cbdaa'
+  });
+
+});
+</script>
+</head>
+{__NOLAYOUT__}
+<body>
+<dl class="admin_login">
+ <dt>
+  <strong>开开古诗词后台管理系统</strong>
+  <em>AdminKK</em>
+ </dt>
+ <form action="login" method="post">
+ <dd class="user_icon">
+  <input type="text" placeholder="账号" class="login_txtbx" name="admin_name" />
+ </dd>
+ <dd class="pwd_icon">
+  <input type="password" placeholder="密码" class="login_txtbx" name="admin_pwd" />
+ </dd>
+ <dd>
+  <input type="submit" value="立即登陆" class="submit_btn"/>
+ </dd>
+ </form>
+
+</dl>
+</body>
+</html>
+
